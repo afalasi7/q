@@ -1,0 +1,13 @@
+.git
+.next
+node_modules
+worker/node_modules
+worker/dist
+.agents
+.claude
+.kiro
+skills
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
