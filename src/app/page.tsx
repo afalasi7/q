@@ -1,65 +1,78 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const highlights = [
+  "Upload a source clip and create a project in one step.",
+  "Apply vertical templates for Reels, TikTok, and Shorts.",
+  "Prepare the pipeline for captions, music, and FFmpeg export jobs.",
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(245,158,11,0.18),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.14),_transparent_25%),#09090b] text-white">
+      <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-8 lg:px-10">
+        <header className="flex items-center justify-between gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.28em] text-white/45">q</p>
+            <h1 className="mt-2 text-2xl font-semibold">AI video editor MVP</h1>
+          </div>
+          <div className="flex items-center gap-3 text-sm">
+            <Link href="/login" className="text-white/70 transition hover:text-white">
+              Login
+            </Link>
+            <Link
+              href="/dashboard"
+              className="rounded-full bg-white px-4 py-2 font-semibold text-black transition hover:bg-white/90"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              Open dashboard
+            </Link>
+          </div>
+        </header>
+
+        <section className="grid flex-1 items-center gap-12 py-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+          <div>
+            <p className="text-sm uppercase tracking-[0.24em] text-amber-300">
+              Built for short-form creators in the Gulf
+            </p>
+            <h2 className="mt-5 max-w-3xl text-5xl font-semibold leading-tight sm:text-6xl">
+              Template-first editing with an AI-ready export pipeline.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/65">
+              This first build sets up upload, dashboard, editor, worker, and deploy-ready
+              infrastructure so the real Supabase and FFmpeg integrations can drop in cleanly.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/dashboard"
+                className="rounded-full bg-white px-5 py-3 font-semibold text-black transition hover:bg-white/90"
+              >
+                View MVP
+              </Link>
+              <Link
+                href="/templates"
+                className="rounded-full border border-white/15 px-5 py-3 font-semibold text-white/80 transition hover:border-white/30 hover:text-white"
+              >
+                Browse templates
+              </Link>
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/40">
+            <div className="rounded-[1.5rem] border border-white/10 bg-black/40 p-5">
+              <div className="flex items-center justify-between text-sm text-white/55">
+                <span>Phase 1</span>
+                <span>Upload -&gt; Template -&gt; Export</span>
+              </div>
+              <div className="mt-6 grid gap-3">
+                {highlights.map((item) => (
+                  <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }

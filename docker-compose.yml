@@ -1,0 +1,21 @@
+services:
+  app:
+    build: .
+    env_file: .env.local
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+
+  worker:
+    build: ./worker
+    env_file: .env.local
+    depends_on:
+      - redis
+    volumes:
+      - /tmp:/tmp
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
